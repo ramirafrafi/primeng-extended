@@ -1,0 +1,45 @@
+$b-size: 1.2rem;
+$b-fsize: 0.8rem;
+
+::ng-deep .dt-tooltip {
+  font-size: 0.9rem;
+
+  & .p-tooltip-text {
+    padding: 3px 6px;
+  }
+}
+.p-button {
+  &.p-button-icon-only {
+    height: auto;
+    width: auto;
+    padding: 0.4rem 0.4rem;
+
+    ::ng-deep .p-button-icon {
+      font-size: 1rem;
+      line-height: 1rem;
+    }
+  }
+  &.p-overlay-badge {
+    overflow: visible;
+
+    ::ng-deep .p-ink {
+      display: none;
+    }
+    ::ng-deep .p-badge {
+      border: 1px solid;
+      top: 0.2rem;
+      right: 0.2rem;
+      font-size: $b-fsize;
+      min-width: $b-size;
+      height: $b-size;
+      line-height: $b-size;
+
+      &.p-badge-dot {
+        display: none;
+      }
+    }
+  }
+  &:not(.p-overlay-badge) ::ng-deep .p-badge {
+    display: none;
+  }
+}

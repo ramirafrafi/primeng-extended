@@ -1,0 +1,18 @@
+$default-color: #227BC1;
+$default-bg-color: #EAF6FF;
+
+.status-badge {
+  background-color: var(--badge-bg-color, $default-bg-color);
+  color: white;
+  user-select: none;
+
+  &.status-badge-md {
+    font-size: .85em;
+  }
+  &.status-badge-lg {
+    font-size: .95em;
+  }
+  .status-badge-value {
+    color: var(--badge-color, $default-color);
+  }
+}

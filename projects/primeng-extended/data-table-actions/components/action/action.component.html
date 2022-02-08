@@ -1,0 +1,18 @@
+<button
+    pButton
+    pRipple
+    pBadge
+    pTooltip="{{ _config?.tooltip }}"
+    tooltipPosition="bottom"
+    tooltipStyleClass="dt-tooltip"
+    icon="{{ _config?.icon }}"
+    iconPos="right"
+    class="{{ _config?.className }} p-button-sm p-button-{{ _config?.type || 'primary' }} p-button-rounded m-1 py-1"
+    label="{{ _config?.label }}"
+    size="large"
+    [value]="_config?.badge || null"
+    [disabled]="_config?.disabled || false"
+    [routerLink]="_config?.routerLink || null"
+    [severity]="_config?.type || 'primary'"
+    (click)="runCallback()">
+</button>
