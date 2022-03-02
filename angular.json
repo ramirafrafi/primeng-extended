@@ -6,7 +6,7 @@
     "primeng-extended": {
       "projectType": "library",
       "root": "projects/primeng-extended",
-      "sourceRoot": "projects/primeng-extended",
+      "sourceRoot": "projects/primeng-extended/src",
       "prefix": "pe",
       "architect": {
         "build": {

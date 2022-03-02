@@ -15,6 +15,10 @@
     "moduleResolution": "node",
     "importHelpers": true,
     "paths": {
+      "library2": [
+        "dist/library2/library2",
+        "dist/library2"
+      ],
       "primeng-extended": [
         "dist/primeng-extended/primeng-extended",
         "dist/primeng-extended"
