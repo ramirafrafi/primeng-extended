@@ -27,7 +27,7 @@
         "test": {
           "builder": "@angular-devkit/build-angular:karma",
           "options": {
-            "main": "projects/primeng-extended/test.ts",
+            "main": "projects/primeng-extended/src/test.ts",
             "tsConfig": "projects/primeng-extended/tsconfig.spec.json",
             "karmaConfig": "projects/primeng-extended/karma.conf.js"
           }
