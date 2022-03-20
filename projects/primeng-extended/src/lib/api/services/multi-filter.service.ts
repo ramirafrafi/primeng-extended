@@ -6,13 +6,19 @@ import { AbstractMultiFilter } from '../classes';
 @Injectable({
   providedIn: 'root'
 })
-export class MultiFilterService extends AbstractMultiFilter {
+export class MultiFilterService extends AbstractMultiFilter<any[]> {
 
   constructor(readonly filterService: FilterService) {
     super()
   }
 
-  filterStep(value: any[], fields: any[], filterValue: any, filterMatchMode: string, filterLocale?: string): Observable<any[]> {
+  filterStep(
+    value: any[],
+    fields: any[],
+    filterValue: any,
+    filterMatchMode: string,
+    filterLocale?: string
+  ): Observable<any[]> {
     return of(
       this.filterService.filter(value, fields, filterValue, filterMatchMode, filterLocale)
     );

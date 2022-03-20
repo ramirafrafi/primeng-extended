@@ -1,10 +1,16 @@
 import { Observable, of } from "rxjs";
 import { expand, last, take, tap } from "rxjs/operators";
 
-export abstract class AbstractMultiFilter {
-    filter(value: any[], fields: any[], filterValues: any[], filterMatchMode: string, filterLocale?: string): Observable<any[]> {
+export abstract class AbstractMultiFilter<T> {
+    filter(
+        value: T | null,
+        fields: any[],
+        filterValues: any[],
+        filterMatchMode: string,
+        filterLocale?: string
+    ): Observable<T | null> {
         if (!value) {
-            return of([]);
+            return of(null);
         }
 
         return of(value)
@@ -19,5 +25,11 @@ export abstract class AbstractMultiFilter {
             );
     }
 
-    abstract filterStep(value: any[], fields: any[], filterValue: any, filterMatchMode: string, filterLocale?: string): Observable<any[]>;
+    abstract filterStep(
+        value: T,
+        fields: any[],
+        filterValue: any,
+        filterMatchMode: string,
+        filterLocale?: string
+    ): Observable<T>;
 }
