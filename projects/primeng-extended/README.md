@@ -2,6 +2,7 @@
 
 ## Introduction
 This is a package that extends the **Angular UI Component Library** [`primeng`](https://github.com/primefaces/primeng). It exports the following **Angular Modules**:
+- [`ApiModule`]()
 - [`DataTableModule`]()
 - [`DataTableActionsModule`]()
 - [`StatusBadgeModule`]()
