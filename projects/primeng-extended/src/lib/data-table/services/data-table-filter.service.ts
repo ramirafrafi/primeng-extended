@@ -40,6 +40,8 @@ export class DataTableFilterService extends AbstractMultiFilter<Table> {
     filterLocale?: string,
   }): void {
     this._value = args.value.value;
+    
+    args.value.reset();
   }
 
   afterFilter(args: {

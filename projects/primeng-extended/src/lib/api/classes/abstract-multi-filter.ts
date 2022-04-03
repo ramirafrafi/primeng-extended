@@ -14,16 +14,20 @@ export abstract class AbstractMultiFilter<T> {
         }
 
         const args = { value, fields, filterValues, filterMatchMode, filterLocale };
+        let stepsCount = this.filterStepsCount(args);
 
         return of(value)
             .pipe(
                 tap(() => this.beforeFilter(args)),
-                expand(val => this.filterStep(val, fields, filterValues[0], filterMatchMode, filterLocale)
-                    .pipe(
-                        tap(() => filterValues = filterValues.slice(1))
-                    )
+                expand(val => !stepsCount
+                    ? of(null)
+                    : this.filterStep(val, fields, filterValues[0], filterMatchMode, filterLocale)
+                        .pipe(
+                            tap(() => filterValues = filterValues.slice(1)),
+                            tap(() => stepsCount--)
+                        )
                 ),
-                take(this.filterStepsCount(args)),
+                take(stepsCount--),
                 last(),
                 tap(() => this.afterFilter(args))
             );
