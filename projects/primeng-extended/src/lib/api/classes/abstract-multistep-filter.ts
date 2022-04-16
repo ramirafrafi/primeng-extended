@@ -1,7 +1,7 @@
 import { Observable, of } from "rxjs";
 import { expand, last, take, tap } from "rxjs/operators";
 
-export abstract class AbstractMultiFilter<T> {
+export abstract class AbstractMultistepFilter<T> {
     filter(
         value: T | null,
         fields: any[],
@@ -14,36 +14,36 @@ export abstract class AbstractMultiFilter<T> {
         }
 
         const args = { value, fields, filterValues, filterMatchMode, filterLocale };
-        let stepsCount = this.filterStepsCount(args);
+        let stepsCountPlusOne = this.stepsCount(args) + 1;
 
         return of(value)
             .pipe(
-                tap(() => this.beforeFilter(args)),
-                expand(val => !stepsCount
+                tap(() => this.beforeStart(args)),
+                expand(val => !stepsCountPlusOne
                     ? of(null)
                     : this.filterStep(val, fields, filterValues[0], filterMatchMode, filterLocale)
                         .pipe(
                             tap(() => filterValues = filterValues.slice(1)),
-                            tap(() => stepsCount--)
+                            tap(() => stepsCountPlusOne--)
                         )
                 ),
-                take(stepsCount--),
+                take(stepsCountPlusOne--),
                 last(),
-                tap(() => this.afterFilter(args))
+                tap(() => this.afterEnd(args))
             );
     }
 
-    filterStepsCount(args: {
+    stepsCount(args: {
         value: T,
         fields: any[],
         filterValues: any[],
         filterMatchMode: string,
         filterLocale?: string,
     }): number {
-        return args.filterValues.length + 1;
+        return args.filterValues.length;
     }
 
-    beforeFilter(args: {
+    beforeStart(args: {
         value: T,
         fields: any[],
         filterValues: any[],
@@ -51,7 +51,7 @@ export abstract class AbstractMultiFilter<T> {
         filterLocale?: string,
     }): void { }
 
-    afterFilter(args: {
+    afterEnd(args: {
         value: T,
         fields: any[],
         filterValues: any[],

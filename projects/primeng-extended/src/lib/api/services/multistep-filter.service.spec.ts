@@ -1,9 +1,9 @@
 import { TestBed } from '@angular/core/testing';
 
-import { MultiFilterService } from './multi-filter.service';
+import { MultistepFilterService } from './multistep-filter.service';
 
-describe('MultiFilterService', () => {
-  let service: MultiFilterService;
+describe('MultistepFilterService', () => {
+  let service: MultistepFilterService;
   let value: any[];
 
   function expectResult(fields: any[], filterValues: any[], expected: any[], done: DoneFn) {
@@ -19,7 +19,7 @@ describe('MultiFilterService', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({});
-    service = TestBed.inject(MultiFilterService);
+    service = TestBed.inject(MultistepFilterService);
     value = [
       { id: 1, value: 'first' },
       { id: 2, value: 'second' },

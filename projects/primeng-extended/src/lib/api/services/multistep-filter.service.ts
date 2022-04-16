@@ -1,12 +1,12 @@
 import { Injectable } from '@angular/core';
 import { FilterService } from 'primeng/api';
 import { Observable, of } from 'rxjs';
-import { AbstractMultiFilter } from '../classes';
+import { AbstractMultistepFilter } from '../classes';
 
 @Injectable({
   providedIn: 'root'
 })
-export class MultiFilterService extends AbstractMultiFilter<any[]> {
+export class MultistepFilterService extends AbstractMultistepFilter<any[]> {
 
   constructor(readonly filterService: FilterService) {
     super()

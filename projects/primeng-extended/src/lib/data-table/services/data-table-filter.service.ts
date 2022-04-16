@@ -1,12 +1,12 @@
 import { Injectable } from '@angular/core';
 import { Table } from 'primeng/table';
 import { Observable, of } from 'rxjs';
-import { AbstractMultiFilter } from '../../api/classes';
+import { AbstractMultistepFilter } from '../../api/classes';
 
 @Injectable({
   providedIn: 'root'
 })
-export class DataTableFilterService extends AbstractMultiFilter<Table> {
+export class DataTableFilterService extends AbstractMultistepFilter<Table> {
   _value?: any[];
 
   filterStep(
@@ -32,7 +32,7 @@ export class DataTableFilterService extends AbstractMultiFilter<Table> {
     return of(table);
   }
 
-  beforeFilter(args: {
+  beforeStart(args: {
     value: Table,
     fields: any[],
     filterValues: any[],
@@ -44,7 +44,7 @@ export class DataTableFilterService extends AbstractMultiFilter<Table> {
     args.value.reset();
   }
 
-  afterFilter(args: {
+  afterEnd(args: {
     value: Table,
     fields: any[],
     filterValues: any[],
