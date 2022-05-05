@@ -1,12 +1,12 @@
 import { Injectable } from '@angular/core';
 import { Table } from 'primeng/table';
 import { Observable, of } from 'rxjs';
-import { AbstractMultistepFilter } from '../../api/classes';
+import { AbstractFilter } from '../../api/classes';
 
 @Injectable({
   providedIn: 'root'
 })
-export class DataTableFilterService extends AbstractMultistepFilter<Table> {
+export class DataTableFilterService extends AbstractFilter<Table> {
   _value?: any[];
 
   filterStep(

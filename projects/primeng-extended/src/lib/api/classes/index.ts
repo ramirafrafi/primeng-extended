@@ -1,1 +1,1 @@
-export * from './abstract-multistep-filter';
+export * from './abstract-filter';

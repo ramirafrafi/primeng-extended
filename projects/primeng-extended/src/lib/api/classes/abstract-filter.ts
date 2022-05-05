@@ -1,7 +1,7 @@
 import { Observable, of } from "rxjs";
 import { expand, last, take, tap } from "rxjs/operators";
 
-export abstract class AbstractMultistepFilter<T> {
+export abstract class AbstractFilter<T> {
     filter(
         value: T | null,
         fields: any[],
