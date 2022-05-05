@@ -3,20 +3,20 @@ import { expand, last, take, tap } from "rxjs/operators";
 
 export abstract class AbstractFilter<T> {
     filter(
-        value: T | null,
+        data: T | null,
         fields: any[],
         filterValues: any[],
         filterMatchMode: string,
         filterLocale?: string
     ): Observable<T | null> {
-        if (!value) {
-            return of(value);
+        if (!data) {
+            return of(data);
         }
 
-        const args = { value, fields, filterValues, filterMatchMode, filterLocale };
+        const args = { data, fields, filterValues, filterMatchMode, filterLocale };
         let stepsCountPlusOne = this.stepsCount(args) + 1;
 
-        return of(value)
+        return of(data)
             .pipe(
                 tap(() => this.beforeStart(args)),
                 expand(val => !stepsCountPlusOne
@@ -34,7 +34,7 @@ export abstract class AbstractFilter<T> {
     }
 
     stepsCount(args: {
-        value: T,
+        data: T,
         fields: any[],
         filterValues: any[],
         filterMatchMode: string,
@@ -44,7 +44,7 @@ export abstract class AbstractFilter<T> {
     }
 
     beforeStart(args: {
-        value: T,
+        data: T,
         fields: any[],
         filterValues: any[],
         filterMatchMode: string,
@@ -52,7 +52,7 @@ export abstract class AbstractFilter<T> {
     }): void { }
 
     afterEnd(args: {
-        value: T,
+        data: T,
         fields: any[],
         filterValues: any[],
         filterMatchMode: string,
@@ -60,7 +60,7 @@ export abstract class AbstractFilter<T> {
     }): void { }
 
     abstract filterStep(
-        value: T,
+        data: T,
         fields: any[],
         filterValue: any,
         filterMatchMode: string,

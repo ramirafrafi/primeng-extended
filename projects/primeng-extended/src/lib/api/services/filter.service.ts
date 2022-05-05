@@ -13,14 +13,14 @@ export class FilterService extends AbstractFilter<any[]> {
   }
 
   filterStep(
-    value: any[],
+    data: any[],
     fields: any[],
     filterValue: any,
     filterMatchMode: string,
     filterLocale?: string
   ): Observable<any[]> {
     return of(
-      this.filterService.filter(value, fields, filterValue, filterMatchMode, filterLocale)
+      this.filterService.filter(data, fields, filterValue, filterMatchMode, filterLocale)
     );
   }
 

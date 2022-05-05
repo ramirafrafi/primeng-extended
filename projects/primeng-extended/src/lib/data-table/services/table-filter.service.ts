@@ -10,7 +10,7 @@ export class TableFilterService extends AbstractFilter<Table> {
   _value?: any[];
 
   filterStep(
-    table: Table,
+    data: Table,
     fields: any[],
     filterValue: any,
     filterMatchMode: string,
@@ -18,42 +18,42 @@ export class TableFilterService extends AbstractFilter<Table> {
   ): Observable<Table> {
     const [field, value, matchMode] = ['global', filterValue, filterMatchMode];
 
-    if (!table.isFilterBlank(value)) {
-      table.filters[field] = { value: value, matchMode: matchMode };
-    } else if (table.filters[field]) {
-      delete table.filters[field];
+    if (!data.isFilterBlank(value)) {
+      data.filters[field] = { value: value, matchMode: matchMode };
+    } else if (data.filters[field]) {
+      delete data.filters[field];
     }
 
-    table._filter();
-    table.filteredValue
-      ? table.value = table.filteredValue
-      : table.filteredValue = table.value;
+    data._filter();
+    data.filteredValue
+      ? data.value = data.filteredValue
+      : data.filteredValue = data.value;
 
-    return of(table);
+    return of(data);
   }
 
   beforeStart(args: {
-    value: Table,
+    data: Table,
     fields: any[],
     filterValues: any[],
     filterMatchMode: string,
     filterLocale?: string,
   }): void {
-    this._value = args.value.value;
+    this._value = args.data.value;
     
-    args.value.reset();
+    args.data.reset();
   }
 
   afterEnd(args: {
-    value: Table,
+    data: Table,
     fields: any[],
     filterValues: any[],
     filterMatchMode: string,
     filterLocale?: string,
   }): void {
-    args.value.value = this._value!;
-    if (args.value.filteredValue?.length === args.value.value?.length) {
-      args.value.filteredValue = null as any;
+    args.data.value = this._value!;
+    if (args.data.filteredValue?.length === args.data.value?.length) {
+      args.data.filteredValue = null as any;
     }
 
     this._value = undefined;
