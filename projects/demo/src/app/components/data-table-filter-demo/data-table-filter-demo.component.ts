@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { Table } from 'primeng/table';
-import { DataTableFilterService } from 'projects/primeng-extended/src/lib/data-table/services/data-table-filter.service';
+import { TableFilterService } from 'projects/primeng-extended/src/lib/data-table/services/table-filter.service';
 
 @Component({
   selector: 'app-data-table-filter-demo',
@@ -20,13 +20,13 @@ export class DataTableFilterDemoComponent implements OnInit {
   set filters(val) {
     this._filters = val;
 
-    this.dtFilter.filter(this.table!, ['global'], this._filters, 'contains')
+    this.filterService.filter(this.table!, ['global'], this._filters, 'contains')
       .subscribe();
   }
 
   constructor(
     readonly http: HttpClient,
-    readonly dtFilter: DataTableFilterService
+    readonly filterService: TableFilterService
   ) { }
 
   ngOnInit(): void {

@@ -1,10 +1,10 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { Table } from 'primeng/table';
 
-import { DataTableFilterService } from './data-table-filter.service';
+import { TableFilterService } from './table-filter.service';
 
-describe('DataTableFilterService', () => {
-  let service: DataTableFilterService;
+describe('TableFilterService', () => {
+  let service: TableFilterService;
   let value: any[];
   let fixture: ComponentFixture<Table>;
 
@@ -22,7 +22,7 @@ describe('DataTableFilterService', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({});
-    service = TestBed.inject(DataTableFilterService);
+    service = TestBed.inject(TableFilterService);
     fixture = TestBed.createComponent(Table);
     value = [
       { id: 1, value: 'first' },

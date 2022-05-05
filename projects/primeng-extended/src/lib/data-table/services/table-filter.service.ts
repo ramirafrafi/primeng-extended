@@ -6,7 +6,7 @@ import { AbstractFilter } from '../../api/classes';
 @Injectable({
   providedIn: 'root'
 })
-export class DataTableFilterService extends AbstractFilter<Table> {
+export class TableFilterService extends AbstractFilter<Table> {
   _value?: any[];
 
   filterStep(
