@@ -1,5 +1,5 @@
 <div class="container">
-    <h1 class="my-5">DataTableFilterService Demo</h1>
+    <h1 class="my-5">TableFilterService Demo</h1>
     
     <p-table
         [value]="value"
@@ -30,7 +30,10 @@
                 <th>City</th>
                 <th>Postal code</th>
                 <th>Recalling Firm</th>
-                <th>Classification</th>
+                <th pSortableColumn="classification">
+                    Classification
+                    <p-sortIcon name="classification"></p-sortIcon>
+                </th>
                 <th>Status</th>
             </tr>
         </ng-template>

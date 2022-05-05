@@ -1,9 +1,9 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { DataTableFilterDemoComponent } from './components/data-table-filter-demo/data-table-filter-demo.component';
+import { TableFilterDemoComponent } from './components/table-filter-demo/table-filter-demo.component';
 
 const routes: Routes = [
-  { path: 'data-table-filter', component: DataTableFilterDemoComponent },
+  { path: 'table-filter', component: TableFilterDemoComponent },
 ];
 
 @NgModule({

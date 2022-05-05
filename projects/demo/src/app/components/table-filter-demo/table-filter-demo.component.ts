@@ -4,11 +4,11 @@ import { Table } from 'primeng/table';
 import { TableFilterService } from 'projects/primeng-extended/src/lib/data-table/services/table-filter.service';
 
 @Component({
-  selector: 'app-data-table-filter-demo',
-  templateUrl: './data-table-filter-demo.component.html',
-  styleUrls: ['./data-table-filter-demo.component.scss']
+  selector: 'app-table-filter-demo',
+  templateUrl: './table-filter-demo.component.html',
+  styleUrls: ['./table-filter-demo.component.scss']
 })
-export class DataTableFilterDemoComponent implements OnInit {
+export class TableFilterDemoComponent implements OnInit {
   @ViewChild(Table) table?: Table;
   _filters = [];
   value = [];
