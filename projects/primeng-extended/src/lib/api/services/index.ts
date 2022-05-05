@@ -1,1 +1,1 @@
-export * from './multistep-filter.service';
+export * from './filter.service';
