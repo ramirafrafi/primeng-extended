@@ -2,7 +2,7 @@ import { DataView } from "primeng/dataview";
 import { Table } from "primeng/table";
 import { AbstractFilter } from "./abstract-filter";
 
-type DataComponent = Table | DataView;
+export type DataComponent = Table | DataView;
 
 export abstract class AbstractDataComponentFilter<T extends DataComponent> extends AbstractFilter<T> {
     _value?: any[];
