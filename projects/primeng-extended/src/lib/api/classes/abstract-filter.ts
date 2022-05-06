@@ -13,12 +13,11 @@ export abstract class AbstractFilter<T> {
             return of(data);
         }
 
-        const args = { data, fields, filterValues, filterMatchMode, filterLocale };
-        let stepsCountPlusOne = this.stepsCount(args) + 1;
+        let stepsCountPlusOne = this.stepsCount(data, fields, filterValues, filterMatchMode, filterLocale) + 1;
 
         return of(data)
             .pipe(
-                tap(() => this.beforeStart(args)),
+                tap(() => this.beforeStart(data, fields, filterValues, filterMatchMode, filterLocale)),
                 expand(val => !stepsCountPlusOne
                     ? of(null)
                     : this.filterStep(val, fields, filterValues[0], filterMatchMode, filterLocale)
@@ -29,35 +28,35 @@ export abstract class AbstractFilter<T> {
                 ),
                 take(stepsCountPlusOne--),
                 last(),
-                tap(() => this.afterEnd(args))
+                tap(() => this.afterEnd(data, fields, filterValues, filterMatchMode, filterLocale))
             );
     }
 
-    stepsCount(args: {
+    stepsCount(
         data: T,
         fields: any[],
         filterValues: any[],
         filterMatchMode: string,
-        filterLocale?: string,
-    }): number {
-        return args.filterValues.length;
+        filterLocale?: string
+    ): number {
+        return filterValues.length;
     }
 
-    beforeStart(args: {
+    beforeStart(
         data: T,
         fields: any[],
         filterValues: any[],
         filterMatchMode: string,
-        filterLocale?: string,
-    }): void { }
+        filterLocale?: string
+    ): void { }
 
-    afterEnd(args: {
+    afterEnd(
         data: T,
         fields: any[],
         filterValues: any[],
         filterMatchMode: string,
-        filterLocale?: string,
-    }): void { }
+        filterLocale?: string
+    ): void { }
 
     abstract filterStep(
         data: T,

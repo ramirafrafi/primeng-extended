@@ -22,11 +22,11 @@ export class DataViewFilterService extends AbstractDataComponentFilter<DataView>
     return of(data);
   }
 
-  resetBeforeStart(args: {
-    data: DataView;
-    fields: any[];
-    filterValues: any[];
-    filterMatchMode: string;
-    filterLocale?: string | undefined;
-  }): void { }
+  resetBeforeStart(
+    data: DataView,
+    fields: any[],
+    filterValues: any[],
+    filterMatchMode: string,
+    filterLocale?: string | undefined
+  ): void { }
 }

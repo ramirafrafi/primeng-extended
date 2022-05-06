@@ -7,38 +7,38 @@ export type DataComponent = Table | DataView;
 export abstract class AbstractDataComponentFilter<T extends DataComponent> extends AbstractFilter<T> {
     _value?: any[];
 
-    beforeStart(args: {
+    beforeStart(
         data: T,
         fields: any[],
         filterValues: any[],
         filterMatchMode: string,
-        filterLocale?: string,
-    }): void {
-        this._value = args.data.value;
+        filterLocale?: string
+    ): void {
+        this._value = data.value;
 
-        this.resetBeforeStart(args);
+        this.resetBeforeStart(data, fields, filterValues, filterMatchMode, filterLocale);
     }
 
-    afterEnd(args: {
+    afterEnd(
         data: T,
         fields: any[],
         filterValues: any[],
         filterMatchMode: string,
-        filterLocale?: string,
-    }): void {
-        args.data.value = this._value!;
-        if (args.data.filteredValue?.length === args.data.value?.length) {
-            args.data.filteredValue = null as any;
+        filterLocale?: string
+    ): void {
+        data.value = this._value!;
+        if (data.filteredValue?.length === data.value?.length) {
+            data.filteredValue = null as any;
         }
 
         this._value = undefined;
     }
 
-    abstract resetBeforeStart(args: {
+    abstract resetBeforeStart(
         data: T,
         fields: any[],
         filterValues: any[],
         filterMatchMode: string,
-        filterLocale?: string,
-    }): void;
+        filterLocale?: string
+    ): void;
 }

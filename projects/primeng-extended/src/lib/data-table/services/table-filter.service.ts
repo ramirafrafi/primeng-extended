@@ -30,14 +30,15 @@ export class TableFilterService extends AbstractDataComponentFilter<Table> {
     return of(data);
   }
 
-  resetBeforeStart(args: {
-    data: Table;
-    fields: any[];
-    filterValues: any[];
-    filterMatchMode: string;
-    filterLocale?: string | undefined;
-  }): void {
-    delete args.data.filters['global'];
-    args.data._filter();
+  resetBeforeStart(
+    data: Table,
+    fields: any[],
+    filterValues: any[],
+    filterMatchMode: string,
+    filterLocale?: string | undefined
+  ): void {
+    delete data.filters['global'];
+
+    data._filter();
   }
 }
