@@ -2,17 +2,7 @@ import { ComponentFixture } from "@angular/core/testing";
 import { AbstractDataComponentFilter, DataComponent } from "../api/classes/abstract-data-component-filter";
 
 
-export function dataComponentValue() {
-    return [
-        { id: 1, value: 'first' },
-        { id: 2, value: 'second' },
-        { id: 3, value: 'third' },
-        { id: 4, value: 'fourth' },
-        { id: 5, value: 'fifth' },
-    ];
-}
-
-export function doTestDataComponent(testArgs: {
+export function doTestDataComponentFilter(testArgs: {
     service: AbstractDataComponentFilter<DataComponent>;
     fixture: ComponentFixture<DataComponent>;
     value: any[];

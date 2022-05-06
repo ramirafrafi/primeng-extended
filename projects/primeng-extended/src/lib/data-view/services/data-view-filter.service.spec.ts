@@ -1,6 +1,7 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { DataView } from 'primeng/dataview';
-import { dataComponentValue, doTestDataComponent } from '../../common/data-component.spec';
+import { doTestDataComponentFilter } from '../../common/do-test-data-component-filter.spec';
+import { testValue } from '../../common/test-value.spec';
 
 import { DataViewFilterService } from './data-view-filter.service';
 
@@ -15,12 +16,12 @@ describe('DataViewFilterService', () => {
     TestBed.configureTestingModule({});
     let service = TestBed.inject(DataViewFilterService);
     let fixture = TestBed.createComponent(DataView);
-    let value = dataComponentValue();
+    let value = testValue();
     fixture.componentInstance.filterBy = 'id,value';
     fixture.componentInstance.value = value;
 
     Object.assign(testArgs, { service, fixture, value });
   });
 
-  doTestDataComponent(testArgs);
+  doTestDataComponentFilter(testArgs);
 });

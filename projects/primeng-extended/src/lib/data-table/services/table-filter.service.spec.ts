@@ -1,6 +1,7 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { Table } from 'primeng/table';
-import { dataComponentValue, doTestDataComponent } from '../../common/data-component.spec';
+import { doTestDataComponentFilter } from '../../common/do-test-data-component-filter.spec';
+import { testValue } from '../../common/test-value.spec';
 
 import { TableFilterService } from './table-filter.service';
 
@@ -15,12 +16,12 @@ describe('TableFilterService', () => {
     TestBed.configureTestingModule({});
     let service = TestBed.inject(TableFilterService);
     let fixture = TestBed.createComponent(Table);
-    let value = dataComponentValue();
+    let value = testValue();
     fixture.componentInstance.globalFilterFields = ['id', 'value'];
     fixture.componentInstance.value = value;
 
     Object.assign(testArgs, { service, fixture, value });
   });
 
-  doTestDataComponent(testArgs);
+  doTestDataComponentFilter(testArgs);
 });
