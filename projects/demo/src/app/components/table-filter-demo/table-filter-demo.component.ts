@@ -1,7 +1,6 @@
-import { HttpClient } from '@angular/common/http';
-import { Component, OnInit, ViewChild } from '@angular/core';
-import { Table } from 'primeng/table';
+import { Component, OnInit } from '@angular/core';
 import { TableFilterService } from 'projects/primeng-extended/src/lib/data-table/services/table-filter.service';
+import { FoodService } from '../../services/food.service';
 
 @Component({
   selector: 'app-table-filter-demo',
@@ -9,29 +8,14 @@ import { TableFilterService } from 'projects/primeng-extended/src/lib/data-table
   styleUrls: ['./table-filter-demo.component.scss']
 })
 export class TableFilterDemoComponent implements OnInit {
-  @ViewChild(Table) table?: Table;
-  _filters = [];
-  value = [];
-
-  get filters() {
-    return this._filters;
-  }
-
-  set filters(val) {
-    this._filters = val;
-
-    this.filterService.filter(this.table!, ['global'], this._filters, 'contains')
-      .subscribe();
-  }
+  value$ = this.foodService.enforcement();
 
   constructor(
-    readonly http: HttpClient,
+    readonly foodService: FoodService,
     readonly filterService: TableFilterService
   ) { }
 
   ngOnInit(): void {
-    this.http.get('https://api.fda.gov/food/enforcement.json?limit=1000')
-      .subscribe((res: any) => this.value = res?.results);
   }
 
 }

@@ -1,8 +1,9 @@
-<div class="container">
-    <h1 class="my-5">TableFilterService Demo</h1>
+<div class="container my-5">
+    <h1 class="mb-5">TableFilterService Demo</h1>
     
     <p-table
-        [value]="value"
+        #table
+        [value]="(value$ | async)!"
         [globalFilterFields]="[
             'country',
             'city',
@@ -12,16 +13,16 @@
             'status'
         ]"
         [paginator]="true"
+        paginatorPosition="both"
         [rows]="10"
-        [rowsPerPageOptions]="[5, 10, 20]">
+        [rowsPerPageOptions]="[5, 10, 20, 50]">
+
         <!-- Search -->
         <ng-template pTemplate="caption">
-            <div style="display: flex; justify-content: flex-end;">
-                <span class="p-input-icon-left">
-                    <i class="pi pi-search"></i>
-                    <p-chips placeholder="Search" [(ngModel)]="filters"></p-chips>
-                </span>
-            </div>
+            <app-search-input
+                [filterService]="filterService"
+                [data]="table">
+            </app-search-input>
         </ng-template>
     
         <ng-template pTemplate="header">

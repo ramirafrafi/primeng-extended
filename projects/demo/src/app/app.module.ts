@@ -9,11 +9,13 @@ import { AppComponent } from './app.component';
 import { TableFilterDemoComponent } from './components/table-filter-demo/table-filter-demo.component';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
+import { SearchInputComponent } from './components/search-input/search-input.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    TableFilterDemoComponent
+    TableFilterDemoComponent,
+    SearchInputComponent
   ],
   imports: [
     BrowserAnimationsModule,
